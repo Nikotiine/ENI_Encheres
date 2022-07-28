@@ -36,7 +36,7 @@
               name="description"></textarea>
 
         <select name="categorie" class="categoriesSell">
-            <option><fmt:message key="search_form_select_option" bundle="${message}"/></option>
+            <option value="0"><fmt:message key="search_form_select_option" bundle="${message}"/></option>
             <c:forEach items="${listDesCategories}" var="categorie">
                 <option value="${categorie.noCategorie}">${categorie.libelle}</option>
             </c:forEach>

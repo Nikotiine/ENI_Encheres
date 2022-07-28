@@ -39,6 +39,11 @@ rd.forward(request,response);
             String rue = request.getParameter("rue");
             String ville = request.getParameter("ville");
             String codepostal = request.getParameter("codepostal");
+            if(idCategorie==0){
+                rd = request.getRequestDispatcher("/jspvente");
+                request.setAttribute("error", 30004);
+                rd.forward(request,response);return;
+            }
 
             if(datefin.before(datedebut)){
                 rd = request.getRequestDispatcher("/jspvente");
