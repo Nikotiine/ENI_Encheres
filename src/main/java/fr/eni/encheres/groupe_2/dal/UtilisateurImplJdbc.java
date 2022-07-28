@@ -17,7 +17,7 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
     private final String SELECT_ALL_USERS_SQL = "SELECT * FROM dbo.UTILISATEURS";
     private final String ADD_NEW_SQL = "INSERT INTO dbo.UTILISATEURS (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
     private final String LOGIN_SQL = "SELECT * FROM dbo.UTILISATEURS WHERE pseudo = ?;";
-  //  private final String VERIF_PSEUDO_ET_MAIL_SQL = "SELECT pseudo,email FROM dbo.UTILISATEURS";
+
 
     private final String UPDATE_UTILISATEUR = "UPDATE dbo.UTILISATEURS SET pseudo=?, nom=?, prenom=?, email=?, telephone=?, rue=?, code_postal=?, ville=? WHERE no_utilisateur =?";
     private final String DELETE_RETRAIT_SQL = "DELETE FROM RETRAITS where no_article in (select no_article from ARTICLES_VENDUS where no_utilisateur=?);";
@@ -64,7 +64,7 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
                     object.setNoUtilisateur(rs.getInt(1));
                 }
                 ps.close();
-                rs.close();
+
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -162,7 +162,7 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
                 listUtilisateur.add(utilisateurCopie);
             }
             ps.close();
-            rs.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -209,8 +209,9 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
                     utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, password, credit, admin);
                 }
             }
+
             ps.close();
-            rs.close();
+
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -246,7 +247,7 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
 
            }
             ps.close();
-            rs.close();
+
 
        } catch (SQLException e) {
            throw new RuntimeException(e);

@@ -52,7 +52,7 @@ public class AdminImplJdbc implements AdminDao{
                 admin = rs.getBoolean("administrateur");
             }
             ps.close();
-            rs.close();
+
             return admin;
 
         } catch (SQLException e) {
@@ -82,7 +82,7 @@ public class AdminImplJdbc implements AdminDao{
                 throw new BuissnessException(ErrorCodeDAL.CATEGORIE_DEJA_EXISTANTE);
             }
             ps.close();
-            rs.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

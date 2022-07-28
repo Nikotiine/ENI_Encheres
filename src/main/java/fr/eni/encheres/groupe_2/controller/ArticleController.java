@@ -59,13 +59,13 @@ public class ArticleController extends HttpServlet {
                 List<Article> listDesArticles = new ArrayList<>();
                 if(!ouverte && !mesEncheres && !remporter && !enCours && !nonDebuter && !terminer){
 
-                    if(motClef.length()==0){
-
+                    if(motClef.length()==0 && idCategorie==0){
                         rd = request.getRequestDispatcher("/accueil");
                         request.setAttribute("error", 30001);
                         rd.forward(request,response);
                         return;
                     }
+
                     listDesArticles =managerArticle.filteredListArticlesByName(motClef,idCategorie);
                 }
                 if(ouverte){

@@ -83,9 +83,10 @@ public class EnchereImplJdbc implements DAO<Enchere> {
                 int no_utilisateur = rs.getInt("no_utilisateur");
                 Enchere enchere = new Enchere(no_enchere,dateEnchere,montant,no_article,no_utilisateur);
                 listeDesEncheres.add(enchere);
-                ps.close();
-                rs.close();
+
+
             }
+            ps.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

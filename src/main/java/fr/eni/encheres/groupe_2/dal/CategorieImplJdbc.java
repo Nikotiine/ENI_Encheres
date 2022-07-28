@@ -49,7 +49,7 @@ public class CategorieImplJdbc implements DAO<Categorie> {
                 listCategorie.add(categorie);
             }
             ps.close();
-            rs.next();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
