@@ -64,10 +64,7 @@ public class ArticleController extends HttpServlet {
                 if(!ouverte && !mesEncheres && !remporter && !enCours && !nonDebuter && !terminer){
 
                     if(motClef.length()==0 && idCategorie==0){
-                        rd = request.getRequestDispatcher("/accueil");
-                        request.setAttribute("error", 30001);
-                        rd.forward(request,response);
-                        return;
+                       listDesArticles=managerArticle.allCatalogue();
                     }
 
                     listDesArticles =managerArticle.filteredListArticlesByName(motClef,idCategorie);

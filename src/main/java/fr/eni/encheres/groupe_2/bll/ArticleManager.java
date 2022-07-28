@@ -334,10 +334,14 @@ public class ArticleManager {
         Date today = new Date();
         Date yesterday = new Date(today.getTime()-(1000 * 60 * 60 * 24));
         Article article = getSelectedArticle(id);
-        if(article.getDateFinEncheres().after(yesterday)){
+        if(article.getDateDebutEncheres().before(today) && article.getDateFinEncheres().after(yesterday)){
             isOpen=true;
         }
         return isOpen;
+    }
+
+    public List<Article> allCatalogue() {
+        return catalogueArticle();
     }
 }
 
