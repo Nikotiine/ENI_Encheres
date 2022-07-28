@@ -19,7 +19,7 @@
   <div class="card">
     <div class="card-image">
       <figure class="image is-128x128">
-        <img src="" alt="">
+        <img src="${pageContext.request.contextPath}/img/wip.jpg" alt="">
       </figure>
     </div>
     <div class="card-content">
