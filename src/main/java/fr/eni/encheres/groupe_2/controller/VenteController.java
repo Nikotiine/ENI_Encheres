@@ -26,6 +26,7 @@ rd.forward(request,response);
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd= null;
         if(request.getSession().getAttribute("login")!=null){
+            java.util.Date today = new java.util.Date();
             rd = request.getRequestDispatcher("/jspvente");
             int idUtilisateur = Integer.parseInt(request.getParameter("id"));
             String nomArticle = request.getParameter("nomArticle");
@@ -42,6 +43,11 @@ rd.forward(request,response);
             if(datefin.before(datedebut)){
                 rd = request.getRequestDispatcher("/jspvente");
                 request.setAttribute("error", 30002);
+                rd.forward(request,response);return;
+            }
+            if(datedebut.before(today)){
+                rd = request.getRequestDispatcher("/jspvente");
+                request.setAttribute("error", 30003);
                 rd.forward(request,response);return;
             }
             Article article = new Article(nomArticle,description,datedebut,datefin,prixInitial,idUtilisateur,idCategorie);

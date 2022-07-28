@@ -27,6 +27,10 @@ public class ArticleController extends HttpServlet {
                 try {
                     Article  article = managerArticle.getSelectedArticle(id);
                     int montant = managerEnchere.montantMeuilleurOffre(id);
+                    boolean isOpen = managerArticle.isOpen(id);
+                    if(isOpen){
+                        request.setAttribute("enchereOuverte",true);
+                    }
                     request.getSession().setAttribute("detailArticle", article);
                     request.getSession().setAttribute("meuilleurOffre",montant);
                     rd.forward(request,response);
@@ -70,7 +74,7 @@ public class ArticleController extends HttpServlet {
                 }
                 if(ouverte){
                     listDesArticles =  managerArticle.filteredListByEnchereOuverte(idCategorie,motClef);
-                    request.setAttribute("enchereOuverte",true);
+
                 }
 
               if(mesEncheres){
@@ -82,16 +86,16 @@ public class ArticleController extends HttpServlet {
               }
               if (nonDebuter){
                   listDesArticles=managerArticle.filteredByStatusNonCommencer();
-                  System.out.println("nondebuter");
+
               }
               if(enCours){
                   listDesArticles=managerArticle.filteredByMesArticles(idUtilisateur);
               }
               if(remporter){
-                  System.out.println("remporte");
+
                   listDesArticles=managerArticle.filteredByMesAchats(idUtilisateur);
               }
-             // request.setAttribute("enchereDisponible", true);
+
               request.setAttribute("articlesDisponible", listDesArticles);
             } catch (Exception e) {
                 throw new RuntimeException(e);

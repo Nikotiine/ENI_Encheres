@@ -322,5 +322,22 @@ public class ArticleManager {
         }
 
     }
+
+    /**
+     * defini si l'enchere est accecible a l'utilisateur (enchere ouverte)
+     * @param id le numero de l'article
+     *
+     * @return bollean oui ou non sur ouverture encheres
+     */
+    public boolean isOpen(int id) {
+        boolean isOpen =false;
+        Date today = new Date();
+        Date yesterday = new Date(today.getTime()-(1000 * 60 * 60 * 24));
+        Article article = getSelectedArticle(id);
+        if(article.getDateFinEncheres().after(yesterday)){
+            isOpen=true;
+        }
+        return isOpen;
+    }
 }
 
