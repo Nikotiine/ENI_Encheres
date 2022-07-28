@@ -16,44 +16,48 @@
 </head>
 <body>
 <form method="post" action="${pageContext.request.contextPath}/articles/">
+    <div class="filtres"><label for="search"><fmt:message key="search_form_filtres" bundle="${message}"/></label>
+    </div>
     <div class="is-flex">
-        <label for="search"> <fmt:message key="search_form_filtres" bundle="${message}"/></label>
-        <input id="search" class="search" name="search" type="text"
+        <input id="search" class="input" name="search" type="text"
                placeholder="<fmt:message key="search_form_search" bundle="${message}"/>">
     </div>
-
-    <label for="categories-select"><fmt:message key="search_form_categorie" bundle="${message}"/></label>
-    <select class="categories" name="Categories" id="Categories-select">
+    <div class="categories">
+        <label for="categories-select"><fmt:message key="search_form_categorie"
+                                                    bundle="${message}"/></label></div>
+    <div class="categories-select"><select name="Categories" id="Categories-select">
         <option value="0"><fmt:message key="search_form_select_option" bundle="${message}"/></option>
         <c:forEach items="${listDesCategories}" var="categorie">
             <option value="${categorie.noCategorie}">${categorie.libelle}</option>
         </c:forEach>
     </select>
+    </div>
     <div class="flex-btn-search">
         <input value="${login.noUtilisateur}" name="idUtilisateur" hidden>
         <button class="button is-primary is-light" type="submit"><fmt:message key="search_form_button"
                                                                               bundle="${message}"/></button>
+        </input>
     </div>
     <br>
-
-    <div class="openlist">
+    <div class="opened">
         <label for="achat">Achat</label>
-        <input type="radio" name="select-option" id="achat">
+        <input type="radio" name="select-option" id="achat" checked>
         <label for="ouverte">Enchere ouverte</label>
-        <input type="checkbox" name="ouverte" value="ouverte" id="ouverte">
+        <input type="checkbox" name="ouverte" value="ouverte" id="ouverte" checked>
         <label for="mes-encheres">mes-encheres</label>
         <input type="checkbox" name="mes-encheres" value="mes-encheres" id="mes-encheres">
         <label for="remporte">Enchere remporte</label>
         <input type="checkbox" name="remporte" value="remporte" id="remporte">
     </div>
-    <div class="currentlist"><label for="vente">Mes Ventes</label>
+    <div class="currentclass">
+        <label for="vente">Mes Ventes</label>
         <input type="radio" name="select-option" id="vente">
-        <label for="en-cours">Mes encheres en-cours</label>
-        <input type="checkbox" name="en-cours" value="en-cours" id="en-cours">
-        <label for="non-debuter">encheres non-debuter</label>
-        <input type="checkbox" name="non-debuter" value="non-debuter" id="non-debuter">
-        <label for="terminer">Enchere terminer</label>
-        <input type="checkbox" name="terminer" value="terminer" id="terminer">
+        <label for="en-cours">Mes encheres en-cours<input type="checkbox" name="en-cours" value="en-cours"
+                                                          id="en-cours">
+            <label for="non-debuter">encheres non-debuter</label>
+            <input type="checkbox" name="non-debuter" value="non-debuter" id="non-debuter">
+            <label for="terminer">Enchere terminer</label>
+            <input type="checkbox" name="terminer" value="terminer" id="terminer">
     </div>
 </form>
 </body>

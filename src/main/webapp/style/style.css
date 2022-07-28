@@ -19,14 +19,7 @@ Edit by Niko 18/07/2022
     width: 100%;
     text-align: right;
     margin: 0 20rem 0 8rem;
-
 }
-
-/* Edit by Speedou 25/07 */
-/* Couleur navBar */
-
-
-
 
 /* Edit by Speedou 25/07 */
 /* Texte d'accueil surligné */
@@ -63,13 +56,15 @@ Edit by Niko 18/07/2022
     width: 35%;
     margin-left: 3rem;
 }
-
+/* Edit by Speedou le 28/07/2022 */
+/* Image de la carte enchère */
 .card-image {
     height: 5rem;
     text-align: -webkit-center;
     margin-top: 2rem;
 }
-
+/* Edit by Speedou le 28/07/2022 */
+/* Contenu de la carte enchère */
 .card-content {
     text-align: -webkit-center;
 }
@@ -101,22 +96,8 @@ Edit by Niko 18/07/2022
     display: inline-block;
 }
 
-.cat {
-
-}
-
-.openlist {
-
-}
-
-.currentlist {
-
-}
-
 .flex-btn-search {
-    margin-left: 1.75rem;
-    margin-top: 1rem;
-    display: inline-grid;
+    text-align: center;
 }
 
 .account-create {
@@ -325,7 +306,16 @@ Edit by Niko 18/07/2022
 /* Edit by Speedou 28/07/2022 */
 /* Table d'affichage du profil utilisateur */
 .user-info{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
 
+.button.is-primary{
+    width: 50%;
+    text-align: -webkit-center;
 }
 
 .navbar-item > img {

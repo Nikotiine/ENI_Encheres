@@ -100,7 +100,7 @@
     </a>
 </c:if>
     <c:if test="${!empty login}">
-        <button class="button is-primary" type="submit" name="editUtilisateur" value="${login.noUtilisateur}">
+        <button class="button is-primary > edit" type="submit" name="editUtilisateur" value="${login.noUtilisateur}">
             <fmt:message key="sign_up_modif" bundle="${message}"/>
         </button>
         <button type="submit" value="delete" name="delete" class="button is-danger">Delete</button>
