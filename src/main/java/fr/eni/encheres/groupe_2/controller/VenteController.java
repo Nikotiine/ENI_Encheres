@@ -27,6 +27,7 @@ rd.forward(request,response);
         RequestDispatcher rd= null;
         if(request.getSession().getAttribute("login")!=null){
             java.util.Date today = new java.util.Date();
+            java.util.Date yesterday = new java.util.Date(today.getTime()-(1000 * 60 * 60 * 24));
             rd = request.getRequestDispatcher("/jspvente");
             int idUtilisateur = Integer.parseInt(request.getParameter("id"));
             String nomArticle = request.getParameter("nomArticle");
@@ -50,7 +51,7 @@ rd.forward(request,response);
                 request.setAttribute("error", 30002);
                 rd.forward(request,response);return;
             }
-            if(datedebut.before(today)){
+            if(datedebut.before(yesterday)){
                 rd = request.getRequestDispatcher("/jspvente");
                 request.setAttribute("error", 30003);
                 rd.forward(request,response);return;
