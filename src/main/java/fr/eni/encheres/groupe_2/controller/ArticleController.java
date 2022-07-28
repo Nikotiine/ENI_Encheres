@@ -29,7 +29,10 @@ public class ArticleController extends HttpServlet {
                     int montant = managerEnchere.montantMeuilleurOffre(id);
                     boolean isOpen = managerArticle.isOpen(id);
                     if(isOpen){
-                        request.setAttribute("enchereOuverte",true);
+                        request.getSession().setAttribute("enchereOuverte",true);
+                    }
+                    if(!isOpen){
+                        request.getSession().removeAttribute("enchereOuverte");
                     }
                     request.getSession().setAttribute("detailArticle", article);
                     request.getSession().setAttribute("meuilleurOffre",montant);

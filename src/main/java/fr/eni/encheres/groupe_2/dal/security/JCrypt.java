@@ -29,7 +29,7 @@ public class JCrypt {
         StringBuilder cryptedText= new StringBuilder();
         char[][] cryptArray = this.tableauEncodage();
         String secretKey = this.SECRET_KEY.toUpperCase();
-        System.out.println(secretKey);
+
         int secretIndex=0;
         for (int i = 0; i < textToEncrypt.length() ; i++) {
             int indexText = textToEncrypt.charAt(i)-65;
