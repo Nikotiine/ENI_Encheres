@@ -10,22 +10,20 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <fmt:setBundle basename="message_jsp" var="message"/>
-
-
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/encheres/">
-    <div class="filtres"><label for="search" ><fmt:message key="search_form_filtres" bundle="${message}"/></label>
+    <div class="filtres"><label for="search"><fmt:message key="search_form_filtres" bundle="${message}"/></label>
     </div>
     <div class="is-flex">
         <input id="search" class="input" name="search" type="text"
                placeholder="<fmt:message key="search_form_search" bundle="${message}"/>">
     </div>
-    <div class="categories"><label for="categories-select"><fmt:message key="search_form_categorie" bundle="${message}"/></label></div>
-
+    <div class="categories"><label for="categories-select"><fmt:message key="search_form_categorie"
+                                                                        bundle="${message}"/></label></div>
     <div class="categorie-select"><select name="Categories" id="Categories-select">
         <option value="0"><fmt:message key="search_form_select_option" bundle="${message}"/></option>
         <c:forEach items="${listDesCategories}" var="categorie">
