@@ -55,6 +55,7 @@ public class EnchereController extends HttpServlet {
             try {
                 managerEnchere.faireEnchere(nouvelleEnchere);
                 request.setAttribute("meuilleurOffre",nouvelleEnchere.getMontantEnchere());
+                request.setAttribute("succes",50004);
             } catch (BuissnessException e) {
                 int meuilleurOffre = managerEnchere.montantMeuilleurOffre(noArticle);
                 request.setAttribute("meuilleurOffre",meuilleurOffre);

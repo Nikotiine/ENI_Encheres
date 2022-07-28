@@ -18,8 +18,8 @@ public class VenteController extends HttpServlet {
     RetraitManager retraitManager = RetraitManager.getInstance();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-RequestDispatcher rd = request.getRequestDispatcher("/jspvente");
-rd.forward(request,response);
+    RequestDispatcher rd = request.getRequestDispatcher("/jspvente");
+    rd.forward(request,response);
     }
 
     @Override
@@ -45,6 +45,7 @@ rd.forward(request,response);
                 request.setAttribute("error", 30004);
                 rd.forward(request,response);return;
             }
+            //TODO:lever exce si datefin null
 
             if(datefin.before(datedebut)){
                 rd = request.getRequestDispatcher("/jspvente");

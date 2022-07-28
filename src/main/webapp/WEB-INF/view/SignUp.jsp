@@ -35,6 +35,9 @@
     <c:if test="${!empty error}">
         <jsp:include page="${pageContext.request.contextPath}/error-toast"/>
     </c:if>
+    <c:if test="${!empty succes}">
+        <jsp:include page="${pageContext.request.contextPath}/succes-toast"/>
+    </c:if>
 
 </div>
 <footer>
