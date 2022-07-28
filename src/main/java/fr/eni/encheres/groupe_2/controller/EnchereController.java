@@ -35,6 +35,7 @@ public class EnchereController extends HttpServlet {
         RequestDispatcher  rd = null;
 
         if(request.getSession().getAttribute("login")!=null){
+            rd = request.getRequestDispatcher("/detailArticle");
             int noArticle = Integer.parseInt(request.getParameter("noArticle"));
             int noUilisateur = Integer.parseInt(request.getParameter("noUtilisateur"));
             int montant = 0;
@@ -45,7 +46,6 @@ public class EnchereController extends HttpServlet {
                 request.setAttribute("error",20020);
             }
             Timestamp dateEnchere = Timestamp.valueOf(LocalDateTime.now());
-            rd = request.getRequestDispatcher("/detailArticle");
             if(montant<prixInitial){
                 request.setAttribute("error",20010);
                 rd.forward(request,response);

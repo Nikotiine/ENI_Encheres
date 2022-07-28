@@ -37,8 +37,7 @@ public class UtilisateurControlleur extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("");
-
+        RequestDispatcher rd = request.getRequestDispatcher("/accueil");
         String pseudo = request.getParameter("pseudo");
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");

@@ -6,8 +6,8 @@ import java.io.Serializable;
  *
  */
 public class Utilisateur implements Serializable {
-   private int noUtilisateur;
-   private String pseudo;
+    private int noUtilisateur;
+    private String pseudo;
     private String nom;
     private String prenom;
     private String email;

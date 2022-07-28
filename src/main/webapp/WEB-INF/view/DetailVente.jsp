@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="../../style/style.css">
-    <title>Title</title>
+    <title>Vente Article</title>
 </head>
 <body>
 <header>
@@ -27,6 +27,9 @@
 <div>
     <c:if test="${!empty error}">
         <jsp:include page="${pageContext.request.contextPath}/error-toast"/>
+    </c:if>
+    <c:if test="${!empty succes}">
+        <jsp:include page="${pageContext.request.contextPath}/succes-toast"/>
     </c:if>
 </div>
 <footer>

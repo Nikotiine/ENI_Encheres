@@ -24,27 +24,44 @@ rd.forward(request,response);
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       RequestDispatcher rd = request.getRequestDispatcher("/jspvente");
-       int idUtilisateur = Integer.parseInt(request.getParameter("id"));
-        String nomArticle = request.getParameter("nomArticle");
-        String description = request.getParameter("description");
-        int idCategorie = Integer.parseInt(request.getParameter("categorie"));
-        int prixInitial = Integer.parseInt(request.getParameter("prix"));
-        Date datedebut = Date.valueOf(request.getParameter("datedebut"));
-        Date datein = Date.valueOf(request.getParameter("datefin"));
-        String rue = request.getParameter("rue");
-        String ville = request.getParameter("ville");
-        String codepostal = request.getParameter("codepostal");
-        Article article = new Article(nomArticle,description,datedebut,datein,prixInitial,idUtilisateur,idCategorie);
+        RequestDispatcher rd= null;
+        if(request.getSession().getAttribute("login")!=null){
+            rd = request.getRequestDispatcher("/jspvente");
+            int idUtilisateur = Integer.parseInt(request.getParameter("id"));
+            String nomArticle = request.getParameter("nomArticle");
+            String description = request.getParameter("description");
+            int idCategorie = Integer.parseInt(request.getParameter("categorie"));
+            int prixInitial = Integer.parseInt(request.getParameter("prix"));
+            //TODO:Verfier que l'input prix est bioen en numeric
+            Date datedebut = Date.valueOf(request.getParameter("datedebut"));
+            Date datefin = Date.valueOf(request.getParameter("datefin"));
+            String rue = request.getParameter("rue");
+            String ville = request.getParameter("ville");
+            String codepostal = request.getParameter("codepostal");
 
-   try {
-       articleManager.addNewArticle(article);
-       Retrait retrait = new Retrait(article.getNoArticle(),rue,ville,codepostal);
-       retraitManager.addNew(retrait);
-   } catch (BuissnessException e) {
-       //rd = request.getRequestDispatcher("/loginpage");
-       request.setAttribute("error", Integer.parseInt(e.getMessage()));
-   }
-        rd.forward(request,response);
+            if(datefin.before(datedebut)){
+                rd = request.getRequestDispatcher("/jspvente");
+                request.setAttribute("error", 30002);
+                rd.forward(request,response);return;
+            }
+            Article article = new Article(nomArticle,description,datedebut,datefin,prixInitial,idUtilisateur,idCategorie);
+
+            try {
+                articleManager.addNewArticle(article);
+                Retrait retrait = new Retrait(article.getNoArticle(),rue,ville,codepostal);
+                retraitManager.addNew(retrait);
+                request.setAttribute("succes", 50003);
+            } catch (BuissnessException e) {
+                request.setAttribute("error", Integer.parseInt(e.getMessage()));
+            }
+            rd.forward(request,response);
+        }
+        else {
+            request.getRequestDispatcher("/loginpage");
+            rd.forward(request,response);
+        }
+
     }
+
+
 }

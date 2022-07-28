@@ -48,6 +48,8 @@ public class CategorieImplJdbc implements DAO<Categorie> {
                 Categorie categorie = new Categorie(noCategorie, libelle);
                 listCategorie.add(categorie);
             }
+            ps.close();
+            rs.next();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

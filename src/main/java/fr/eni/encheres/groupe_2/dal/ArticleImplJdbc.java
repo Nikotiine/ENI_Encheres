@@ -20,6 +20,11 @@ public class ArticleImplJdbc<ARTICLES_VENDUS> implements DAO<Article> {
    private final String ADD_NEW_ARTICLE_SQL="INSERT INTO dbo.ARTICLES_VENDUS (nom_article,description,date_debut_encheres,date_fin_encheres,prix_initial,prix_vente,no_utilisateur,no_categorie) VALUES (?,?,?,?,?,?,?,?)";
     PreparedStatement ps;
     ResultSet rs;
+
+    /**
+     * Ajoute un article en BDD
+     * @param object Article envoye par l'utlisiteur
+     */
     @Override
     public void addNew(Article object) {
         PreparedStatement ps =null;
@@ -54,7 +59,6 @@ public class ArticleImplJdbc<ARTICLES_VENDUS> implements DAO<Article> {
     public Article selectById(int id) {
         PreparedStatement ps=null;
         ResultSet rs=null;
-
         Article article = null;
         try (Connection cnx = ConnectionProvider.getConnection()) {
             ps = cnx.prepareStatement(SELECT_BY_ID_SQL);
@@ -84,11 +88,14 @@ public class ArticleImplJdbc<ARTICLES_VENDUS> implements DAO<Article> {
 
     }
 
+    /**
+     * Slectionne tous les articles en BDD et les renvoye au manager
+     * @return List<Article> de tous les articles
+     */
     @Override
     public List<Article> selectALL() {
         PreparedStatement ps=null;
         ResultSet rs=null;
-
         List<Article> listArticle = new ArrayList<>();
         try (Connection cnx = ConnectionProvider.getConnection()){
             ps = cnx.prepareStatement(SELECT_ALL_SQL);
@@ -112,10 +119,7 @@ public class ArticleImplJdbc<ARTICLES_VENDUS> implements DAO<Article> {
                 String code_postal = rs.getString("code_postal");
                 String ville = rs.getString("ville");
                 String libelle = rs.getString("libelle");
-
-               // Categorie categorie = new Categorie(idCategorie,libelle);
                 Utilisateur vendeur = new Utilisateur(idUtilisateur, pseudo, nom, prenom, email,telephone,rue,code_postal,ville);
-
                 Article article = new Article(noArticle,nomArticle,description,dateDebut,dateFin,prixIn,prixVente,vendeur,idCategorie);
                 listArticle.add(article);
             }

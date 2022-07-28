@@ -90,24 +90,16 @@ public class UtilisateurManager {
 
     //TODO:Faire la javadoc
     public void updateUtilisater(Utilisateur utilisateur ,String password) throws BuissnessException {
-        System.out.println(utilisateur.getPseudo());
         boolean verifPassword = loginDao.confirmPassword(password,utilisateur.getNoUtilisateur());
-        System.out.println("verif pass" +  verifPassword);
         if(!verifPassword){
             throw new BuissnessException(CodeErrorBll.PASSWORD_INCORRECT);
         }
         boolean verifInputOk = verifInput(utilisateur);
-        System.out.println("verfifinpiu" + verifInputOk);
-
         boolean updateValide = verifPseudoUpdate(utilisateur.getPseudo(), utilisateur.getNoUtilisateur());;
-
-
-        System.out.println("verfif update"+updateValide);
         if(!updateValide){
             throw new BuissnessException(CodeErrorBll.CHAMP_INVALIDE);
         }
         if(verifInputOk) {
-            System.out.println("je passe dans le manager");
             utilisateurDAO.update(utilisateur);
         }
     }

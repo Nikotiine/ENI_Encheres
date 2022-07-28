@@ -21,13 +21,16 @@ public class AdminImplJdbc implements AdminDao{
     @Override
     public void addNewCategorie(String libelle) throws BuissnessException {
         PreparedStatement ps =null;
-        ResultSet rs = null;
+
         boolean libelleDisponible = verifCategorie(libelle);
         if (libelleDisponible){
             try(Connection cnx = ConnectionProvider.getConnection()) {
                 ps= cnx.prepareStatement(NEW_CATEGORIE_SQL);
                 ps.setString(1,libelle);
-            } catch (SQLException e) {
+                ps.close();
+
+            }
+            catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -40,7 +43,6 @@ public class AdminImplJdbc implements AdminDao{
         PreparedStatement ps =null;
         ResultSet rs =null;
 
-
         boolean admin = false;
         try(Connection cnx = ConnectionProvider.getConnection()) {
             ps = cnx.prepareStatement(SELECT_ADMIN_BY_ID_SQL);
@@ -49,12 +51,21 @@ public class AdminImplJdbc implements AdminDao{
             while (rs.next()){
                 admin = rs.getBoolean("administrateur");
             }
+            ps.close();
+            rs.close();
             return admin;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
+    /**
+     * Verifie qu'on ajoute pas la meme categorie 2*
+     * @param libelle
+     * @return
+     * @throws BuissnessException
+     */
     private boolean verifCategorie(String libelle) throws BuissnessException{
         PreparedStatement ps =null;
         ResultSet rs =null;
@@ -70,6 +81,8 @@ public class AdminImplJdbc implements AdminDao{
             if (listeDesLibelles.contains(libelle)){
                 throw new BuissnessException(ErrorCodeDAL.CATEGORIE_DEJA_EXISTANTE);
             }
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

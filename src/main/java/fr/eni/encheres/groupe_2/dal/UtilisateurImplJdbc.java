@@ -63,6 +63,8 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
                 while (rs.next()) {
                     object.setNoUtilisateur(rs.getInt(1));
                 }
+                ps.close();
+                rs.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -105,13 +107,10 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
     }
 
 
-    //TODO:ameliorer la methode pour verifier pseudo et mail ! attention le pseudo doit etre comparer et accepter que le meme pseudo
+
     @Override
     public void update(Utilisateur object) throws BuissnessException {
         PreparedStatement ps = null;
-        ResultSet rs = null;
-        System.out.println("update SQL");
-
 
             try (Connection cnx = ConnectionProvider.getConnection()) {
                 ps = cnx.prepareStatement(UPDATE_UTILISATEUR);
@@ -126,6 +125,7 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
                 ps.setString(8, object.getVille());
                 ps.setInt(9, object.getNoUtilisateur());
                 ps.executeUpdate();
+                ps.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -158,10 +158,11 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
                 String motDePasse = rs.getString("mot_de_passe");
                 int credit = rs.getInt("credit");
                 boolean admin = rs.getBoolean("administrateur");
-
                 Utilisateur utilisateurCopie = new Utilisateur(noUtilisateur,pseudo,nom,prenom,email,telephone,rue,code_postal,ville,motDePasse,credit,admin);
                 listUtilisateur.add(utilisateurCopie);
             }
+            ps.close();
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -208,6 +209,9 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
                     utilisateur = new Utilisateur(id, pseudo, nom, prenom, email, telephone, rue, codePostal, ville, password, credit, admin);
                 }
             }
+            ps.close();
+            rs.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -241,6 +245,8 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
                }
 
            }
+            ps.close();
+            rs.close();
 
        } catch (SQLException e) {
            throw new RuntimeException(e);
@@ -263,6 +269,7 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
             ps.setString(1,String.valueOf(cryptedPassw));
             ps.setInt(2, id);
             ps.executeUpdate();
+            ps.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -274,15 +281,12 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
     @Override
     public void updateCredit(int id, int nouveauCredit) {
         PreparedStatement ps = null;
-
-        // ResultSet rs = null;
-
         try (Connection cnx = ConnectionProvider.getConnection()){
             ps = cnx.prepareStatement(UPDATE_CREDIT_UTILISATEUR);
             ps.setInt(1,nouveauCredit);
             ps.setInt(2,id);
-
             ps.executeUpdate();
+            ps.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -297,6 +301,7 @@ public class UtilisateurImplJdbc implements DAO<Utilisateur>, LoginDao,EncheresD
             ps.setInt(1,montantEnchere);
             ps.setInt(2,no_article);
             ps.executeUpdate();
+            ps.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

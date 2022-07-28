@@ -55,18 +55,19 @@
         </div>
 
     </form>
-    <div>
-        <c:if test="${!empty error}">
-            <jsp:include page="${pageContext.request.contextPath}/error-toast"/>
-        </c:if>
-    </div>
-    <div>
-        <c:if test="${!empty succes}">
-            <jsp:include page="${pageContext.request.contextPath}/succes-toast"/>
-        </c:if>
-    </div>
 
 
+
+</div>
+<div>
+    <c:if test="${!empty error}">
+        <jsp:include page="${pageContext.request.contextPath}/error-toast"/>
+    </c:if>
+</div>
+<div>
+    <c:if test="${!empty succes}">
+        <jsp:include page="${pageContext.request.contextPath}/succes-toast"/>
+    </c:if>
 </div>
 <footer>
     <jsp:include page="${pageContext.request.contextPath}/footer"/>

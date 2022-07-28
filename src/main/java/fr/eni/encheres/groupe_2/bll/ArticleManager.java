@@ -99,32 +99,28 @@ public class ArticleManager {
         if(idCategorie==0){
             return listeafiltrer;
         }
-        for (Article a : listeafiltrer
-        ) {
-        if (a.getNoCategorie()==idCategorie){
+        for (Article a : listeafiltrer){
+            if (a.getNoCategorie()==idCategorie){
             listefiltre.add(a);
-            System.out.println(a);
-        }
+             }
         }
         return listefiltre;
     }
 
     /**
      * Filtre les aricle par nom ( lettre contenues dans le titre de l'article)
-     * @param nomArticle le nom de l'article (String)
+     * @param motClef le nom de l'article (String)
      * @param idCategorie et l'id de se categorie (si O = toutes les categories)
      * @return La liste filtre des articles
      */
-    public List<Article> filteredListArticlesByName(String nomArticle , int idCategorie) {
+    public List<Article> filteredListArticlesByName(String motClef , int idCategorie) {
         List<Article> listeAfiltrer = filteredByCategorie(idCategorie);
         List<Article> listeFiltre = new ArrayList<>();
-        System.out.println(nomArticle);
 
         for (Article b : listeAfiltrer
         ) {
-            if (b.getNomArticle().toLowerCase().contains(nomArticle.toLowerCase())){
+            if (b.getNomArticle().toLowerCase().contains(motClef.toLowerCase())){
                 listeFiltre.add(b);
-                System.out.println(b);
             }
 
         }
@@ -145,9 +141,10 @@ public class ArticleManager {
                  ) {
 
                 Date today = new Date();
-                Date tomorrow = new Date(today.getTime()+ (1000 * 60 * 60 * 24));
+                Date yesterday = new Date(today.getTime()-(1000 * 60 * 60 * 24));
+              // Date tomorrow = new Date(today.getTime()+ (1000 * 60 * 60 * 24));
 
-                if(a.getDateDebutEncheres().before(today) && a.getDateFinEncheres().after(tomorrow)){
+                if(a.getDateDebutEncheres().before(today) && a.getDateFinEncheres().after(yesterday)){
                     listarenvoyer.add(a);
                 }
             }
@@ -209,15 +206,15 @@ public class ArticleManager {
 
     /**
      * filtre la liste des articles dont l'utlisateur est le vendeur
-     * @param id int noUtilisteur ( vendeur )
+     * @param idUtilisateur int noUtilisteur ( vendeur )
      * @return liste des articles
      */
-    public List<Article> filteredByMesArticles(int id){
+    public List<Article> filteredByMesArticles(int idUtilisateur){
         List<Article> toutLesArticles=catalogueArticle();
         List<Article> listeFiltrer=new ArrayList<>();
         for (Article a:toutLesArticles
              ) {
-            if(a.getUtilisateur().getNoUtilisateur()==id){
+            if(a.getUtilisateur().getNoUtilisateur()==idUtilisateur){
                 listeFiltrer.add(a);
             }
         }

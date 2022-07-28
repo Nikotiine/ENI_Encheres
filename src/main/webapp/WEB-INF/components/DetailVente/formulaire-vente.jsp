@@ -9,7 +9,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <fmt:setBundle basename="message_jsp" var="message"/>
-<c:set var="langue_choisie" value="${param.lang}"/>no_categorie
+<c:set var="langue_choisie" value="${param.lang}"/>
 
 <html>
 <head>

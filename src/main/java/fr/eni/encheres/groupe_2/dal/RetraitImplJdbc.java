@@ -20,6 +20,7 @@ public class RetraitImplJdbc implements DAO<Retrait> {
             ps.setString(3,object.getCodePostal());
             ps.setString(4,object.getVille());
             ps.executeUpdate();
+            ps.close();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

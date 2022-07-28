@@ -25,6 +25,7 @@ public class EnchereImplJdbc implements DAO<Enchere> {
             ps.setInt(3,object.getNo_article());
             ps.setInt(4,object.getNo_utilisateur());
             ps.executeUpdate();
+            ps.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -41,23 +42,25 @@ public class EnchereImplJdbc implements DAO<Enchere> {
     }
 
     /**
+     * Methode inutile a dans l'it 1
      * Met à jour la BDD en fonction des encheres effectuees
      * @param object enchere
      */
     @Override
     public void update(Enchere object) {
-PreparedStatement ps;
-try(Connection cnx = ConnectionProvider.getConnection()) {
+    PreparedStatement ps;
+    try(Connection cnx = ConnectionProvider.getConnection()) {
     ps = cnx.prepareStatement(UPDATE_ENCHERE_SQL);
     ps.setTimestamp(1,object.getDateEnchere());
     ps.setInt(2,object.getMontantEnchere());
     ps.setInt(3,object.getNo_utilisateur());
     ps.setInt(4,object.getNo_article());
     ps.executeUpdate();
+    ps.close();
 
-} catch (SQLException e) {
+    } catch (SQLException e) {
     throw new RuntimeException(e);
-}
+    }
     }
 
     /**
@@ -80,6 +83,8 @@ try(Connection cnx = ConnectionProvider.getConnection()) {
                 int no_utilisateur = rs.getInt("no_utilisateur");
                 Enchere enchere = new Enchere(no_enchere,dateEnchere,montant,no_article,no_utilisateur);
                 listeDesEncheres.add(enchere);
+                ps.close();
+                rs.close();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

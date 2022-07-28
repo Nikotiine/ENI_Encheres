@@ -26,7 +26,6 @@ public class JCrypt {
      * @return Stringbuilder , mot de passe crypter
      */
     public StringBuilder encrypt(String textToEncrypt,int keySk){
-        System.out.println(textToEncrypt);
         StringBuilder cryptedText= new StringBuilder();
         char[][] cryptArray = this.tableauEncodage();
         String secretKey = this.SECRET_KEY.toUpperCase();

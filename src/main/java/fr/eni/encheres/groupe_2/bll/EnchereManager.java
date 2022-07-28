@@ -33,6 +33,15 @@ public class EnchereManager {
     }
 
     /**
+     * recupere catalogueEnchere Private en catalogue Public
+     * @return catalogue
+     */
+    public List<Enchere> catalogue(){
+        return catalogueEnchere();
+    }
+
+
+    /**
      * Stocke la liste complet des encheres qui sont en BDD
      * @return liste encheres
      */
@@ -46,7 +55,6 @@ public class EnchereManager {
      * @throws BuissnessException remonte une erreur en cas de non coformite d'enchere
      */
     public void faireEnchere(Enchere enchere) throws BuissnessException {
-
         boolean nouvelleEnchere = nouvelleEnchere(enchere.getNo_article());
         boolean enchereValable = enchereValable(enchere.getNo_article(),enchere.getMontantEnchere());
         int creditDisponible = creditDisponible(enchere.getNo_utilisateur());
@@ -65,19 +73,24 @@ public class EnchereManager {
         else if(enchereValable && !isDernierEncherisseur) {
             int idArticle = enchere.getNo_article();
             //Met à jour les credits l'ancien Encherisseur => lui rend sa mise
-            Enchere ancienneEnchere = getAnciennEnchere (idArticle);
+            Enchere ancienneEnchere =  getAncienneEnchere(idArticle);
             int creditAncienEncherisseur = creditDisponible (ancienneEnchere.getNo_utilisateur());
             int nouveauCredit = creditAncienEncherisseur + ancienneEnchere.getMontantEnchere();
             encheresFeatureUtilisateur.updateCredit(ancienneEnchere.getNo_utilisateur(),nouveauCredit);
             enchereDAO.addNew(enchere);
-            //TODO:mettre lancienne enchere a 0 lors d'une nouvelle.
+
         }
         // Met à jour Credits Utilisateurs => debit la mise de son compte
         int creditRestant = creditDisponible-enchere.getMontantEnchere();
         encheresFeatureUtilisateur.updateCredit(enchere.getNo_utilisateur(),creditRestant);
     }
 
-    private Enchere getAnciennEnchere(int idArticle) {
+    /**
+     * Permet de connaitre la derniere enchere faite sur cet article
+     * @param idArticle le numero de l'article
+     * @return un objet enchere alimenter avec la derniere enchere en date
+     */
+    private Enchere getAncienneEnchere(int idArticle) {
         List<Enchere> enchereList = catalogueEnchere();
         Enchere ancienneEnchere = null;
 
@@ -86,7 +99,6 @@ public class EnchereManager {
 
                 ancienneEnchere = e;
             }
-
         }return ancienneEnchere ;
     }
 
@@ -108,13 +120,7 @@ public class EnchereManager {
     }
 
 
-    /**
-     * recupere catalogueEnchere Private en catalogue Public
-     * @return catalogue
-     */
-    public List<Enchere> catalogue(){
-        return catalogueEnchere();
-    }
+
 
     /**
      * Defini si c'est une premire enchere ou si c'est un update d'une ancienne
@@ -152,7 +158,7 @@ public class EnchereManager {
     }
 
     /**
-     * Verifie si le montant propose par l'ulisateur est superieur la la derniere meuilleur offre
+     * Verifie si le montant propose par l'utilisateur est superieur la la derniere meuilleur offre
      *
      * @param idArticle le numero de l'article encheri
      * @param montant le montant de l'enchere demander
@@ -160,7 +166,6 @@ public class EnchereManager {
      * @throws BuissnessException remonte un message d'erreur dans la jsp
      */
     private boolean enchereValable(int idArticle , int montant) throws BuissnessException {
-        System.out.println("ici EV" + idArticle);
         List<Enchere> listeDesEncheresEnCours = catalogueEnchere();
         for (Enchere e:listeDesEncheresEnCours
              ) {
@@ -198,7 +203,7 @@ public class EnchereManager {
      * @return true si user dernier
      * @throws BuissnessException
      */
-  public boolean isDernierEncherisseur (int idUtilisateur, int noArticle) throws BuissnessException {
+  private boolean isDernierEncherisseur (int idUtilisateur, int noArticle) throws BuissnessException {
         boolean isDernier = false;
         List<Enchere> enchereList = catalogueEnchere();
         List<Enchere> listeMemeArticle = new ArrayList<>();
