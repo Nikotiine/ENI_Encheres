@@ -173,13 +173,13 @@ public class ArticleManager {
      * filtre la liste des article dont les encheres sont terminer
      * @return liste des articles
      */
-    public List<Article> filteredByStatusTermnine(){
+    public List<Article> filteredByStatusTermnine(int idUtilisateur){
         List<Article> listeafiltrer =catalogueArticle();
         List<Article> listeFiltrer=new ArrayList<>();
         Date today = new Date();
         for (Article a:listeafiltrer
              ) {
-            if (a.getDateFinEncheres().before(today)){
+            if (a.getDateFinEncheres().before(today) && a.getUtilisateur().getNoUtilisateur() == idUtilisateur){
                 listeFiltrer.add(a);
             }
         }
@@ -221,7 +221,7 @@ public class ArticleManager {
         return listeFiltrer;
     }
     public List<Article> filteredByMesAchats(int idUtilisateur){
-        List<Article> listeDesArticles= filteredByStatusTermnine();
+        List<Article> listeDesArticles= filteredByStatusTermnine(idUtilisateur);
         List<Enchere> listeDesEnchere = enchereDAO.selectALL();
         List<Article> mesAchats = new ArrayList<>();
         for (Article a:listeDesArticles
@@ -229,7 +229,7 @@ public class ArticleManager {
             if(a.getPrixVente()>0){
                 for (Enchere e:listeDesEnchere
                      ) {
-                    if(a.getNoArticle()==e.getNo_article() && a.getPrixVente()==e.getMontantEnchere())
+                    if(a.getNoArticle()==e.getNo_article() && a.getPrixVente()==e.getMontantEnchere() && a.getNoArticle()==idUtilisateur)
                         mesAchats.add(a);
                 }
             }

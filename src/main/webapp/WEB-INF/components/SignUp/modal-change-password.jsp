@@ -23,14 +23,14 @@
     </header>
     <section class="modal-card-body">
       <label for="password"> <fmt:message key="sign_up_password" bundle="${message}"/>
-     <input class="input" type="password" name="password" id="password"></label>
+     <input class="input" type="password" name="password" id="password" required></label>
       <label>
         <fmt:message key="sign_up_confirmation" bundle="${message}"/>
-        <input class="input" type="password" placeholder="confirm" name="confirmPassword">
+        <input class="input" type="password" placeholder="confirm" name="confirmPassword" required>
       </label>
       <label>
         <fmt:message key="modal_change_password_new_password" bundle="${message}"/>
-        <input class="input" type="password" placeholder="confirm" name="newPassword">
+        <input class="input" type="password" placeholder="confirm" name="newPassword" required>
           <input type="text" name="idUtilisateur" value="${login.noUtilisateur}" hidden>
       </label>
 

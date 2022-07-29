@@ -28,7 +28,7 @@
     <label for="nomArticle" class="nameArticle"><fmt:message key="formulaire_vente_name_article" bundle="${message}"/>
     </label>
     <input class="input is-primary" type="text" placeholder="
-    <fmt:message key="formulaire_vente_name_article" bundle="${message}"/>" id="nomArticle" name="nomArticle">
+    <fmt:message key="formulaire_vente_name_article" bundle="${message}"/>" id="nomArticle" name="nomArticle" required>
     <label for="description" class="description"> <fmt:message key="formulaire_vente_description" bundle="${message}"/>
     </label>
     <textarea class="textarea is-primary" placeholder="
@@ -60,12 +60,12 @@
     </div>
     <label for="prix" class="prix"> <fmt:message key="formulaire_vente_price" bundle="${message}"/>
     </label>
-    <input class="input is-primary" type="number" placeholder="Veuillez saisir le prix de vente" id="prix" name="prix">
+    <input class="input is-primary" type="number" placeholder="Veuillez saisir le prix de vente" id="prix" name="prix" required>
     <label for="datedebut" class="date-debut"><fmt:message key="formulaire_vente_start_date"
                                                            bundle="${message}"/></label>
-    <input type="date" name="datedebut" id="datedebut" placeholder="date de debut" class="input is-primary">
+    <input type="date" name="datedebut" id="datedebut" placeholder="date de debut" class="input is-primary" required>
     <label for="datefin" class="date-fin"><fmt:message key="formulaire_vente_end_date" bundle="${message}"/></label>
-    <input type="date" name="datefin" id="datefin" placeholder="date de fin" class="input is-primary">
+    <input type="date" name="datefin" id="datefin" placeholder="date de fin" class="input is-primary" required>
     <fieldset>
         <label for="rue" class="rue-enchere"><fmt:message key="formulaire_vente_street" bundle="${message}"/></label>
         <input class="input is-primary" type="text" name="rue" placeholder="Primary input" id="rue"

@@ -82,7 +82,7 @@ public class ArticleController extends HttpServlet {
                  listDesArticles=managerArticle.filteredListByIdArticle(listeDeMesEncheres);
               }
               if(terminer){
-                  listDesArticles=managerArticle.filteredByStatusTermnine();
+                  listDesArticles=managerArticle.filteredByStatusTermnine(idUtilisateur);
               }
               if (nonDebuter){
                   listDesArticles=managerArticle.filteredByStatusNonCommencer();

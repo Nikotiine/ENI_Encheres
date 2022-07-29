@@ -54,11 +54,11 @@
             <label for="vente">Mes Ventes</label>
             <input type="radio" name="select-option" id="vente">
             <label for="en-cours">Mes encheres en-cours</label>
-            <input type="checkbox" name="en-cours" value="en-cours" id="en-cours">
+            <input type="checkbox" name="en-cours" value="en-cours" id="en-cours" disabled>
             <label for="non-debuter">encheres non-debuter</label>
-            <input type="checkbox" name="non-debuter" value="non-debuter" id="non-debuter">
+            <input type="checkbox" name="non-debuter" value="non-debuter" id="non-debuter" disabled>
             <label for="terminer">Enchere terminer</label>
-            <input type="checkbox" name="terminer" value="terminer" id="terminer">
+            <input type="checkbox" name="terminer" value="terminer" id="terminer" disabled>
         </div>
     </div>
 </form>
