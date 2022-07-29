@@ -16,7 +16,7 @@
 <body>
 <form method="post" action="${pageContext.request.contextPath}/utilisateurs/">
     <div class="form-new-user">
-        <div class="input-container">
+        <div class="container">
             <label> <fmt:message key="sign_up_pseudo" bundle="${message}"/>
                 <input class="input" type="text" placeholder="pseudo" name="pseudo" value="${login.pseudo}">
             </label>
@@ -25,10 +25,7 @@
                 <input class="input" type="text"
                        placeholder="nom" name="nom"
                        value="${login.nom}">
-
             </label>
-
-
             <label>
                 <fmt:message key="sign_up_first_name" bundle="${message}"/>
                 <input class="input" type="text"
@@ -39,8 +36,7 @@
                 <label>
                     <fmt:message key="sign_up_email" bundle="${message}"/>
                     <input class="input" type="email"
-                           placeholder="email" name="email"
-                          >
+                           placeholder="email" name="email">
                 </label>
             </c:if>
             <c:if test="${!empty login}">
@@ -51,16 +47,14 @@
                            value="${login.email}" readonly>
                 </label>
             </c:if>
-
             <label>
                 <fmt:message key="sign_up_phone" bundle="${message}"/>
                 <input class="input" type="tel"
                        placeholder="telephone" name="telephone"
                        value="${login.telephone}">
             </label>
-
         </div>
-        <div class="input-container">
+        <div class="container2">
             <label>
                 <fmt:message key="sign_up_adress" bundle="${message}"/>
                 <input class="input" type="text" placeholder="adresse" name="rue" value="${login.rue}">
@@ -85,30 +79,32 @@
                 </label>
             </c:if>
             <c:if test="${!empty login}">
-                <button class="button is-danger" value="changePassword" name="changePassword" type="submit">Changer de mot de passe</button>
+                <button class="button is-danger" value="changePassword" name="changePassword" type="submit">Changer de
+                    mot de passe
+                </button>
             </c:if>
 
 
         </div>
     </div>
-
-<c:if test="${empty login}">
-    <button class="button" type="submit" name="addNewUtilisateur"><fmt:message key="sign_up_create"
-                                                                              bundle="${message}"/></button>
-    <a href="${pageContext.request.contextPath}/encheres/" class="button"> <fmt:message key="sign-up-cancel"
-                                                                                        bundle="${message}"/>
-    </a>
-</c:if>
-    <c:if test="${!empty login}">
-        <button class="button is-primary > edit" type="submit" name="editUtilisateur" value="${login.noUtilisateur}">
-            <fmt:message key="sign_up_modif" bundle="${message}"/>
-        </button>
-        <button type="submit" value="delete" name="delete" class="button is-danger">Delete</button>
-        <a href="${pageContext.request.contextPath}/encheres/" class="button is-danger">
-            <fmt:message key="sign-up-cancel" bundle="${message}"/></a>
-    </c:if>
-
-
+    <div class="btn-sign-up">
+        <c:if test="${empty login}">
+            <button class="button is-primary" type="submit" name="addNewUtilisateur"><fmt:message key="sign_up_create"
+                                                                                                  bundle="${message}"/></button>
+            <a href="${pageContext.request.contextPath}/encheres/" class="button is-danger"> <fmt:message
+                    key="sign-up-cancel"
+                    bundle="${message}"/>
+            </a>
+        </c:if>
+        <c:if test="${!empty login}">
+            <button class="button is-primary" type="submit" name="editUtilisateur" value="${login.noUtilisateur}">
+                <fmt:message key="sign_up_modif" bundle="${message}"/>
+            </button>
+            <button type="submit" value="delete" name="delete" class="button is-danger">Delete</button>
+            <a href="${pageContext.request.contextPath}/encheres/" class="button is-danger">
+                <fmt:message key="sign-up-cancel" bundle="${message}"/></a>
+        </c:if>
+    </div>
 </form>
 </body>
 </html>

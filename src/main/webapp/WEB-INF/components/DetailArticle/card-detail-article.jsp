@@ -16,9 +16,9 @@
 </head>
 <body>
 <c:if test="${!empty detailArticle}">
-  <div class="card">
-    <div class="card-image">
-      <figure class="image is-128x128">
+  <div class="card-logged">
+    <div class="card-image-logged">
+      <figure class="logged-card-image">
         <img src="${pageContext.request.contextPath}/img/wip.jpg" alt="">
       </figure>
     </div>
@@ -26,6 +26,7 @@
       <div class="media">
         <c:if test="${!empty login}">
           <a href="${pageContext.request.contextPath}/articles?id=${article.noArticle}">${article.nomArticle}</a>
+
         </c:if>
         <c:if test="${empty login}">
           <div class="media-content">
@@ -35,22 +36,22 @@
       </div>
     </div>
   </div>
-  <div class="content">
+  <div class="details-articles">
    <div>
      <p>
-       <fmt:message key="card_detail_article_nom_article" bundle="${message}"/>${detailArticle.nomArticle}
+       <b><fmt:message key="card_detail_article_nom_article" bundle="${message}"/></b>${detailArticle.nomArticle}
        <br>
-       <fmt:message key="card_detail_article_description" bundle="${message}"/>${detailArticle.description}
+       <b><fmt:message key="card_detail_article_description" bundle="${message}"/></b>${detailArticle.description}
        <br>
-       <fmt:message key="card_detail_article_date_debut" bundle="${message}"/>${detailArticle.dateDebutEncheres}
+       <b><fmt:message key="card_detail_article_date_debut" bundle="${message}"/></b>${detailArticle.dateDebutEncheres}
        <br>
-       <fmt:message key="card_detail_article_date_fin" bundle="${message}"/>${detailArticle.dateFinEncheres}
+       <b><fmt:message key="card_detail_article_date_fin" bundle="${message}"/></b>${detailArticle.dateFinEncheres}
        <br>
-       <fmt:message key="card_detail_article_prix_in" bundle="${message}"/>${detailArticle.prixInitial}
+       <b><fmt:message key="card_detail_article_prix_in" bundle="${message}"/></b>${detailArticle.prixInitial}
        <br>
-       <fmt:message key="card_detail_article_montant_enchere" bundle="${message}"/>${meuilleurOffre}
+       <b><fmt:message key="card_detail_article_montant_enchere" bundle="${message}"/></b>${meuilleurOffre}
        <br>
-       <fmt:message key="card_detail_article_nom_vendeur" bundle="${message}"/>${detailArticle.utilisateur.pseudo}
+       <b><fmt:message key="card_detail_article_nom_vendeur" bundle="${message}"/></b>${detailArticle.utilisateur.pseudo}
        <br>
      </p>
    </div>
@@ -60,9 +61,9 @@
           <input value="${detailArticle.noArticle}" name="noArticle" hidden>
           <input value="${detailArticle.prixInitial}" name="prixInitial" hidden>
           <input value="${login.noUtilisateur}" name="noUtilisateur" hidden>
-          <label for="montant" >Montant</label>
+          <label for="montant" ><b><fmt:message key="detail_article_montant_enchere" bundle="${message}"/></b></label>
           <input type="number" name="montant" placeholder="montant de votre enchere" id="montant" required>
-          <button name="encherir" type="submit" value="encherir">Encherir</button>
+          <button class="button is-info" name="encherir" type="submit" value="encherir">Encherir</button>
         </form>
 
       </c:if>

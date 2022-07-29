@@ -15,34 +15,35 @@
     <title>Title</title>
 </head>
 <body>
-<c:forEach items="${articlesDisponible}" var="article">
-
-    <div class="card">
-        <div class="card-image">
-            <figure class="image is-128x128">
-                <img src="/img/wip.jpg" alt="Placeholder image">
-            </figure>
-        </div>
-        <div class="card-content">
-            <div class="media">
-                <c:if test="${!empty login}">
-                    <a href="${pageContext.request.contextPath}/articles?id=${article.noArticle}">${article.nomArticle}</a>
-                </c:if>
-                <c:if test="${empty login}">
-                    <div class="media-content">
-                        <p>${article.nomArticle}</p>
-                    </div>
-                </c:if>
+<div class="is-flex">
+    <c:forEach items="${articlesDisponible}" var="article">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-128x128">
+                    <img src="/img/wip.jpg" alt="Placeholder image">
+                </figure>
             </div>
+            <div class="card-content">
+                <div class="media">
+                    <c:if test="${!empty login}">
+                        <a href="${pageContext.request.contextPath}/articles?id=${article.noArticle}">${article.nomArticle}</a>
+                    </c:if>
+                    <c:if test="${empty login}">
+                        <div class="media-content">
+                            <p>${article.nomArticle}</p>
+                        </div>
+                    </c:if>
+                </div>
 
-            <div class="content">
-                <p><fmt:message key="card_encheres_content" bundle="${message}"/>${article.prixInitial} <fmt:message key="card_encheres_price" bundle="${message}"/><br>
-                    <fmt:message key="card_encheres_fin_enchere" bundle="${message}"/>${article.dateFinEncheres}<br><br>
-                    <fmt:message key="card_encheres_vendeur" bundle="${message}"/>${article.utilisateur.pseudo}</p>
+                <div class="content">
+                    <p><fmt:message key="card_encheres_content" bundle="${message}"/>${article.prixInitial} <fmt:message
+                            key="card_encheres_price" bundle="${message}"/><br>
+                        <fmt:message key="card_encheres_fin_enchere" bundle="${message}"/>${article.dateFinEncheres}<br><br>
+                        <fmt:message key="card_encheres_vendeur" bundle="${message}"/>${article.utilisateur.pseudo}</p>
+                </div>
             </div>
         </div>
-    </div>
-
-</c:forEach>
+    </c:forEach>
+</div>
 </body>
 </html>

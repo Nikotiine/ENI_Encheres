@@ -16,9 +16,9 @@
 </head>
 <body>
 <form method="post" action="${pageContext.request.contextPath}/articles/">
-    <div class="filtres"><label for="search"><fmt:message key="search_form_filtres" bundle="${message}"/></label>
+    <div class="filtres-sign-up"><label for="search"><fmt:message key="search_form_filtres" bundle="${message}"/></label>
     </div>
-    <div class="is-flex">
+    <div class="search-sign-up">
         <input id="search" class="input" name="search" type="text"
                placeholder="<fmt:message key="search_form_search" bundle="${message}"/>">
     </div>
@@ -39,25 +39,27 @@
         </input>
     </div>
     <br>
-    <div class="opened">
-        <label for="achat">Achat</label>
-        <input type="radio" name="select-option" id="achat" checked>
-        <label for="ouverte">Enchere ouverte</label>
-        <input type="checkbox" name="ouverte" value="ouverte" id="ouverte" checked>
-        <label for="mes-encheres">mes-encheres</label>
-        <input type="checkbox" name="mes-encheres" value="mes-encheres" id="mes-encheres">
-        <label for="remporte">Enchere remporte</label>
-        <input type="checkbox" name="remporte" value="remporte" id="remporte">
-    </div>
-    <div class="currentclass">
-        <label for="vente">Mes Ventes</label>
-        <input type="radio" name="select-option" id="vente">
-        <label for="en-cours">Mes encheres en-cours<input type="checkbox" name="en-cours" value="en-cours"
-                                                          id="en-cours">
+    <div class="is-flex">
+        <div class="opened-left">
+            <label for="achat">Achat</label>
+            <input type="radio" name="select-option" id="achat" checked>
+            <label for="ouverte">Enchere ouverte</label>
+            <input type="checkbox" name="ouverte" value="ouverte" id="ouverte" checked>
+            <label for="mes-encheres">mes-encheres</label>
+            <input type="checkbox" name="mes-encheres" value="mes-encheres" id="mes-encheres">
+            <label for="remporte">Enchere remporte</label>
+            <input type="checkbox" name="remporte" value="remporte" id="remporte">
+        </div>
+        <div class="opened-right">
+            <label for="vente">Mes Ventes</label>
+            <input type="radio" name="select-option" id="vente">
+            <label for="en-cours">Mes encheres en-cours</label>
+            <input type="checkbox" name="en-cours" value="en-cours" id="en-cours">
             <label for="non-debuter">encheres non-debuter</label>
             <input type="checkbox" name="non-debuter" value="non-debuter" id="non-debuter">
             <label for="terminer">Enchere terminer</label>
             <input type="checkbox" name="terminer" value="terminer" id="terminer">
+        </div>
     </div>
 </form>
 </body>

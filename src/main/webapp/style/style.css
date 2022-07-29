@@ -56,6 +56,7 @@ Edit by Niko 18/07/2022
     width: 35%;
     margin-left: 3rem;
 }
+
 /* Edit by Speedou le 28/07/2022 */
 /* Image de la carte enchère */
 .card-image {
@@ -63,6 +64,7 @@ Edit by Niko 18/07/2022
     text-align: -webkit-center;
     margin-top: 2rem;
 }
+
 /* Edit by Speedou le 28/07/2022 */
 /* Contenu de la carte enchère */
 .card-content {
@@ -74,36 +76,63 @@ Edit by Niko 18/07/2022
 }
 
 .is-flex {
-    padding-top: 1rem;
-    padding-left: 1rem;
-    width: 50%;
+    display: flex !important;
+    flex-wrap: wrap;
+    text-align-last: center;
+    justify-content: center;
 }
 
+/* Edit by Speedou 29/07/2022 */
+/* Filtres Search formulaire */
 .filtres {
-    margin-left: 1rem;
     margin-right: 2rem;
     margin-top: 0.5rem;
+    margin-bottom: 1rem;
 }
 
+/* Edit by Speedou 29/07/2022 */
+/* Filtres Search Connected */
+.filtres-sign-up {
+    margin-right: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Edit by Speedou 29/07/2022 */
+/* Bouton Categories search Formulaire */
 .categories {
-    padding-left: 1rem;
+    padding-left: -2rem;
     margin-top: 1rem;
     display: inline-block;
 }
 
-.categorie-select {
+
+.categories-select {
     margin-left: 0.75rem;
     display: inline-block;
 }
 
 .flex-btn-search {
-    text-align: center;
+    margin-top: 1rem;
+    margin-left: 6rem;
+}
+
+/* Edit by Speedou 29/07/2022 */
+/* Fonction recherche Search Formulaire */
+#search {
+    width: 30rem;
+}
+
+/* Edit by Speedou 29/07/2022 */
+/* Fonction recherche Search Connected */
+.search-sign-up {
+    width: 30rem;
 }
 
 .account-create {
     text-decoration: underline;
     font-size: 2rem;
-    text-align: center;
+    text-align-last: center;
     font-weight: bold;
     margin-top: 3rem;
     margin-bottom: 5rem;
@@ -118,7 +147,6 @@ Edit by Niko 18/07/2022
     text-decoration: underline;
     font-size: 2rem;
     text-align: center;
-    font-weight: bold;
     margin-top: 3rem;
     margin-bottom: -9rem;
 }
@@ -154,53 +182,30 @@ Edit by Niko 18/07/2022
 
 .form-new-user {
     display: flex;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-    flex-direction: row;
-    justify-content: center;
+    margin-inline: 33rem;
+    margin-bottom: 5rem;
 }
 
-.form-new-user > .input-container > label {
+.container {
     display: flex;
     align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: 1rem;
 }
 
-.form-new-user > .input-container > label > input {
-    margin-left: 2rem;
-    min-width: 13rem;
-}
-
-.input-container-left {
-    margin-right: 2rem;
+.container2 {
     display: flex;
-    flex-direction: column;
-    align-items: normal;
-    align-content: space-around;
-}
-
-.input-container-right {
-    display: flex;
-    flex-direction: column;
-    align-items: normal;
-    align-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 1rem;
 }
 
 /* Edit by Speedou 28/07/2022 */
 /* Bouton créer / Annuler Sign Up */
-.sign-up-create-button {
-    flex-direction: column-reverse;
-    display: grid;
-    justify-items: stretch;
-    justify-content: space-evenly;
-    margin-top: 5rem;
-}
-
-.sign-up-cancel-button {
-    flex-direction: column-reverse;
-    display: grid;
-    justify-items: stretch;
-    justify-content: space-evenly;
-    margin-top: 5rem;
+.btn-sign-up {
+    margin-left: 43rem;
+    margin-bottom: 3rem;
 }
 
 .create-button {
@@ -221,6 +226,46 @@ Edit by Niko 18/07/2022
     margin-bottom: 5rem;
 }
 
+/* Edit by Speedou 29/07/2022 */
+/* Mise en page DetailArticle Loged */
+.details-articles {
+    display: flex;
+    margin-top: -5rem;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+/* Edit by Speedou 29/07/2022 */
+/* Bouton enchère détails article */
+.button.is-info{
+    display: table;
+    margin-left: 7rem;
+    margin-top: 1rem;
+}
+/* Edit by Speedou 29/07/2022 */
+/* Card page détails article */
+.card-logged{
+    margin-top: 5rem;
+    margin-bottom: 9rem;
+    width: 35%;
+    margin-left: 2rem;
+}
+/* Edit by Speedou 29/07/2022 */
+/* Contour d'image page détails article */
+.card-image-logged {
+
+}
+
+/* Edit by Speedou 29/07/2022 */
+/* Image page détails article */
+.logged-card-image {
+    width: 25rem;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: -3rem;
+}
+
 .nameArticle {
     display: list-item;
     margin-top: 1rem;
@@ -239,7 +284,7 @@ Edit by Niko 18/07/2022
     margin-bottom: 1rem;
 }
 
-.categoriesSell{
+.categoriesSell {
     display: list-item;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -305,7 +350,7 @@ Edit by Niko 18/07/2022
 
 /* Edit by Speedou 28/07/2022 */
 /* Table d'affichage du profil utilisateur */
-.user-info{
+.user-info {
     margin: auto;
     width: 50%;
     text-align: center;
@@ -313,9 +358,8 @@ Edit by Niko 18/07/2022
     margin-bottom: 5rem;
 }
 
-.button.is-primary{
-    width: 50%;
-    text-align: -webkit-center;
+.button.is-primary {
+
 }
 
 .navbar-item > img {
@@ -325,11 +369,29 @@ Edit by Niko 18/07/2022
 .max-width50 {
     max-width: 50%;
 }
+
 /* Edit By Niko 28/07/2022 CSS Toast/
 
  */
-.is-top{
+.is-top {
     position: fixed;
     top: 5.9rem;
     width: 100%;
 }
+
+/* Edit by Speedou 29/07/2022 */
+/* Catégories enchères Search Connected */
+.opened-left {
+    display: flex;
+    flex-direction: column;
+    text-align-last: center;
+    margin-right: auto;
+}
+
+.opened-right {
+    display: flex;
+    flex-direction: column;
+    text-align-last: center;
+    margin-right: 75rem;
+}
+
