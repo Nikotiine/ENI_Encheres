@@ -53,13 +53,14 @@
       </span>
     </span>
             <span class="file-name">
-      Fonctionabilite non presente
+      <fmt:message key="formulaire_vente_not_present"
+                   bundle="${message}"/>
     </span>
         </label>
     </div>
     <label for="prix" class="prix"> <fmt:message key="formulaire_vente_price" bundle="${message}"/>
     </label>
-    <input class="input is-primary" type="number" placeholder="Primary input" id="prix" name="prix">
+    <input class="input is-primary" type="number" placeholder="Veuillez saisir le prix de vente" id="prix" name="prix">
     <label for="datedebut" class="date-debut"><fmt:message key="formulaire_vente_start_date"
                                                            bundle="${message}"/></label>
     <input type="date" name="datedebut" id="datedebut" placeholder="date de debut" class="input is-primary">

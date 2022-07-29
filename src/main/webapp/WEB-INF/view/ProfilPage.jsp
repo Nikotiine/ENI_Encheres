@@ -64,7 +64,9 @@
     <tr>
         <th><fmt:message key="profil_page_ville" bundle="${message}"/></th>
         <td> ${login.ville}</td>
-
+    <tr>
+        <th><fmt:message key="profil_page_credit" bundle="${message}"/></th>
+        <td> ${login.credit}</td>
     </tr>
 </table>
 <div class="flex-btn-search">

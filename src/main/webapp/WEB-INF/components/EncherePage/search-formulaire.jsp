@@ -24,7 +24,7 @@
     </div>
     <div class="categories"><label for="categories-select"><fmt:message key="search_form_categorie"
                                                                         bundle="${message}"/></label></div>
-    <div class="categorie-select"><select name="Categories" id="Categories-select">
+    <div class="categories-select"><select name="Categories" id="Categories-select">
         <option value="0"><fmt:message key="search_form_select_option" bundle="${message}"/></option>
         <c:forEach items="${listDesCategories}" var="categorie">
             <option value="${categorie.noCategorie}">${categorie.libelle}</option>

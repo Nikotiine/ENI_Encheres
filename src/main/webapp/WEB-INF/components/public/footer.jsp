@@ -16,7 +16,8 @@
 <fmt:setBundle basename="message_jsp" var="message"/>
 
 <footer class="footer">
-    <p class="has-text-centered"><fmt:message key="footer_credit" bundle="${message}"/></p>
+    <p class="has-text-centered"><fmt:message key="footer_credit" bundle="${message}"/></p> <br>
+    <p></p>
 </footer>
 </body>
 </html>

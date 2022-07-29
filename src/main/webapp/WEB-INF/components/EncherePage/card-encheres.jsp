@@ -12,7 +12,7 @@
 <fmt:setBundle basename="message_jsp" var="message"/>
 <html>
 <head>
-    <title>Title</title>
+    <title></title>
 </head>
 <body>
 <div class="is-flex">

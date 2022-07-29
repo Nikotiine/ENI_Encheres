@@ -204,7 +204,7 @@ Edit by Niko 18/07/2022
 /* Edit by Speedou 28/07/2022 */
 /* Bouton créer / Annuler Sign Up */
 .btn-sign-up {
-    margin-left: 43rem;
+    margin-left: 42rem;
     margin-bottom: 3rem;
 }
 
@@ -231,6 +231,7 @@ Edit by Niko 18/07/2022
 .details-articles {
     display: flex;
     margin-top: -5rem;
+    margin-bottom: 1rem;
     flex-direction: row;
     align-items: flex-end;
     justify-content: center;
@@ -238,19 +239,20 @@ Edit by Niko 18/07/2022
 
 /* Edit by Speedou 29/07/2022 */
 /* Bouton enchère détails article */
-.button.is-info{
+.button.is-info {
     display: table;
     margin-left: 7rem;
-    margin-top: 1rem;
 }
+
 /* Edit by Speedou 29/07/2022 */
 /* Card page détails article */
-.card-logged{
+.card-logged {
     margin-top: 5rem;
     margin-bottom: 9rem;
     width: 35%;
     margin-left: 2rem;
 }
+
 /* Edit by Speedou 29/07/2022 */
 /* Contour d'image page détails article */
 .card-image-logged {
@@ -358,10 +360,6 @@ Edit by Niko 18/07/2022
     margin-bottom: 5rem;
 }
 
-.button.is-primary {
-
-}
-
 .navbar-item > img {
     max-height: 4.75rem;
 }
@@ -388,10 +386,12 @@ Edit by Niko 18/07/2022
     margin-right: auto;
 }
 
+/* Edit by Speedou 29/07/2022 */
+/* Catégories enchères Search Connected */
 .opened-right {
     display: flex;
     flex-direction: column;
     text-align-last: center;
-    margin-right: 75rem;
+    margin-right: 72rem;
 }
 

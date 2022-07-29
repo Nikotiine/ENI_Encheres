@@ -63,7 +63,7 @@
           <input value="${login.noUtilisateur}" name="noUtilisateur" hidden>
           <label for="montant" ><b><fmt:message key="detail_article_montant_enchere" bundle="${message}"/></b></label>
           <input type="number" name="montant" placeholder="montant de votre enchere" id="montant" required>
-          <button class="button is-info" name="encherir" type="submit" value="encherir">Encherir</button>
+          <button class="button is-info" name="encherir" type="submit" value="encherir"><fmt:message key="card_detail_article_bid" bundle="${message}"/></button>
         </form>
 
       </c:if>

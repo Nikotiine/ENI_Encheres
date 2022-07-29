@@ -18,26 +18,28 @@
 <form action="${pageContext.request.contextPath}/confirm?action=${confirmModal}" method="post" class="form">
 
 
-<div class="modal is-active">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Veuillez confirmer ...</p>
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title"><fmt:message key="modal_confirmation_confirmer" bundle="${message}"/></p>
 
-        </header>
-        <section class="modal-card-body">
-           <h2>Merci de confirmer par mdp</h2>
-            <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password">
-            <input name="idUtilisateur" value="${login.noUtilisateur}" hidden >
+            </header>
+            <section class="modal-card-body">
+                <h2> <fmt:message key="modal_confirmation_password_confirm" bundle="${message}"/> </h2>
+                <label for="password"><fmt:message key="sign_up_password" bundle="${message}"/></label>
+                <input type="password" name="password" id="password">
+                <input name="idUtilisateur" value="${login.noUtilisateur}" hidden>
 
-        </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success" type="submit" name="valider">Valider</button>
-           <a href="${pageContext.request.contextPath}/encheres/" class="button">Annuler</a>
-        </footer>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-success" type="submit" name="valider"><fmt:message
+                        key="formulaire_vente_confirm" bundle="${message}"/></button>
+                <a href="${pageContext.request.contextPath}/encheres/" class="button"><fmt:message key="sign-up-cancel"
+                                                                                                   bundle="${message}"/></a>
+            </footer>
+        </div>
     </div>
-</div>
 </form>
 </body>
 </html>
